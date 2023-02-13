@@ -1,4 +1,5 @@
 import math
+from decimal import Decimal 
 
 def menu():
 
@@ -18,7 +19,9 @@ def menu():
         case 5:
             Exo5()
         case 6:
-            Exo6()  
+            Exo6()
+        case 7:
+            Exo7() 
 
 ##################################################################################################################
 
@@ -117,10 +120,53 @@ def Exo5():
 
 ##################################################################################################################
 
+def F1(x,n):
+    resultatF1 = x**n / Decimal(facto(n))
+    return(resultatF1)
+
+def facto(valeur):
+    ch = 1
+    valeurt= []
+    for i in range(1, valeur+1) : 
+        ch = ch*i
+    return(ch)
+
 def Exo6():
 
-    A = int(input("Entrer un entier : "))
+    valeur = int(input("Veuillez rentrer une valeur pour n : "))
+    
+    resultat1 = facto(valeur-1)
+    resultat2 = facto(valeur)
+    resultat = resultat1*resultat2
+    
+    print("factoriel(",valeur,") est : ",resultat)
+    
+    x  = int(input("Saisir la valeur de x : "))
+    n  = int(input("Saisir une valeur pour n : "))
+    print(F1(x,n))
+    
+    
+    print("Fonction Res(X,i)")
+    x = Decimal(input("Saisir une valeur pour X : "))
+    n = int(input("Saisir une valeur pour n : "))
 
-    print(math.factorial(A))
+    somme += F1(x)
+    print(somme)
+
+##################################################################################################################
+
+def Exo7():
+
+    valeur = (int(input("Entrez une valeur pour n : ")))
+    U0 = 1
+    Un = U0
+
+    for i in range(1, valeur+1) :
+
+        Vn = Un + 1/(valeur * facto(i))
+        Un = Un + (1 / facto(i))
+
+        print("Valeur de la suite Un avec n = ",valeur,"= ",Un)
+        print("Valeur de la suite Vn avec n = ",valeur,"= ",Vn)
 
 menu()
